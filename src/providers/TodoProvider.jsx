@@ -12,12 +12,18 @@ const TodoProvider = ({children}) => {
 
     const addTodo = (newTodoItem) => {
         setTodoList([...todoList,newTodoItem])
-    }
+    };
+
+    const removeTodo = (todoIndex) => {
+         const newList = todoList.filter((_, index) => index !== todoIndex);
+         setTodoList(newList);
+    };
 
     const contextValue = {
         todoList,
         getNumberOfTodoItems,
-        addTodo
+        addTodo,
+        removeTodo
     };
 
     return <TodoContext.Provider value={contextValue}>{children}</TodoContext.Provider>
